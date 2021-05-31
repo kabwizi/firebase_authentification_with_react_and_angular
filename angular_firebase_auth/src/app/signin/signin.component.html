@@ -1,0 +1,56 @@
+<div class="shadow-xl p-10 rounded-lg">
+  <h2 class="font-black text-6xl text-center">SIGN IN</h2>
+  <form
+    [formGroup]="signinFormGroup"
+    (ngSubmit)="createUserWithEmailAndPasswordFn()"
+    class="mt-8 flex flex-col gap-5"
+  >
+    <div *ngIf="signinError" class="text-center bg-red-200 rounded-lg py-2">
+      {{ signinError }}
+    </div>
+    <div class="flex gap-8">
+      <label class="text-lg font-semibold flex-1">
+        First name <span class="text-red-500">*</span>
+        <br />
+        <input
+          formControlName="firstName"
+          class="shadow-md rounded-lg px-4 py-2 w-full"
+          type="text"
+          placeholder="Eg: Jhon"
+        />
+      </label>
+      <label class="text-lg font-semibold flex-1">
+        Last name <span class="text-red-500">*</span>
+        <br />
+        <input
+          formControlName="lastName"
+          class="shadow-md rounded-lg px-4 py-2 w-full"
+          type="text"
+          placeholder="Eg: Doe"
+        />
+      </label>
+    </div>
+    <label class="text-lg font-semibold">
+      Email <span class="text-red-500">*</span>
+      <br />
+      <input
+        formControlName="email"
+        class="shadow-md rounded-lg px-4 py-2 w-full"
+        type="text"
+        placeholder="Enter your e-mail"
+      />
+    </label>
+    <label class="text-lg font-semibold">
+      Password <span class="text-red-500">*</span>
+      <br />
+      <input
+        formControlName="password"
+        class="shadow-md rounded-lg px-4 py-2 w-full"
+        type="password"
+        placeholder="Enter your password"
+      />
+    </label>
+    <button type="submit" class="btn">Sign in</button>
+    <a routerLink="/" class="btn-text text-sm"> Login </a>
+  </form>
+</div>

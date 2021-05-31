@@ -1,0 +1,12 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+/* You can add global styles to this file, and also import other style files */
+
+/*global style*/
+.btn {
+  @apply bg-blue-500 hover:bg-blue-400 shadow-md text-white text-lg font-bold rounded-lg py-2 cursor-pointer mt-2;
+}
+.btn-text {
+  @apply text-center text-gray-500 hover:text-black font-semibold cursor-pointer;
+}

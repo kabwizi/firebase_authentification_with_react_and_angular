@@ -1,0 +1,50 @@
+<div class="shadow-xl w-96 p-10 rounded-lg">
+  <h2 class="font-black text-6xl text-center">LOGIN</h2>
+  <form
+    [formGroup]="loginFormGroup"
+    (ngSubmit)="signInWithEmailAndPasswordFn()"
+    class="mt-8 flex flex-col gap-5"
+  >
+    <div
+      *ngIf="passwordEmailSend"
+      class="text-center bg-green-200 rounded-lg py-2"
+    >
+      {{ passwordEmailSend }}
+    </div>
+
+    <div *ngIf="loginError" class="text-center bg-red-200 rounded-lg py-2">
+      {{ loginError }}
+    </div>
+    <div
+      (click)="loginWithGoogleFn()"
+      class="btn-text flex gap-5 justify-center font-semibold"
+    >
+      <img src="assets/google.svg" alt="google icon" height="20" width="20" />
+      Login with Google
+    </div>
+    <hr />
+    <label class="text-lg font-semibold">
+      Email <span class="text-red-500">*</span>
+      <br />
+      <input
+        formControlName="email"
+        class="shadow-md rounded-lg px-4 py-2 w-full"
+        type="text"
+        placeholder="Enter your e-mail"
+      />
+    </label>
+    <label class="text-lg font-semibold">
+      Password <span class="text-red-500">*</span>
+      <br />
+      <input
+        formControlName="password"
+        class="shadow-md rounded-lg px-4 py-2 w-full"
+        type="password"
+        placeholder="Enter your password"
+      />
+    </label>
+    <button type="submit" class="btn">Login</button>
+    <a routerLink="signin" class="btn-text text-sm"> Sign in </a>
+    <p (click)="resetePasswordFn()" class="btn-text text-xs">Forgot password</p>
+  </form>
+</div>

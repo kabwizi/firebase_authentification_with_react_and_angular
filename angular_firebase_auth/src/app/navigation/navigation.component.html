@@ -1,0 +1,8 @@
+<nav class="shadow-lg flex justify-between items-center p-5">
+  <a routerLink="/" class="font-black text-3xl">Angular Firebase Auth </a>
+  <div class="flex items-center gap-4 font-semibold">
+    <a routerLink="/home" class="btn-text"> Home </a>
+    <a *ngIf="!(user$ | async)" routerLink="/" class="btn-text"> Login </a>
+    <button (click)="logoutFn()" class="btn px-5">Logout</button>
+  </div>
+</nav>

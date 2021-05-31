@@ -1,0 +1,60 @@
+<div>
+  <h2 class="text-5xl font-black">
+    Welcom
+    {{ (user$ | async)?.email }}
+  </h2>
+  <div class="mt-16 space-y-4 w-full">
+    <a routerLink="/preview" class="method-wrapper">
+      <div class="bg-green-500 method-name">Get</div>
+      <div class="p-5">/post</div>
+    </a>
+    <div (click)="goToThePreviewPageFn($event)" class="method-wrapper">
+      <div class="bg-green-500 method-name">Get</div>
+      <div class="w-full flex justify-between items-center pr-5">
+        <div class="p-5">/post/:id</div>
+        <input
+          [(ngModel)]="getPostId"
+          class="border-2 w-16 h-10 pl-2"
+          type="number"
+        />
+      </div>
+    </div>
+    <div (click)="toggleShowPopUp('POST')" class="method-wrapper">
+      <div class="bg-blue-500 method-name">Post</div>
+      <div class="p-5">/post</div>
+    </div>
+    <div (click)="toggleShowPopUp('PUT')" class="method-wrapper">
+      <div class="bg-yellow-500 method-name">Put</div>
+      <div class="p-5">/post</div>
+    </div>
+    <div class="method-wrapper">
+      <div class="bg-red-500 method-name">Delete</div>
+      <div class="w-full flex justify-between items-center">
+        <div class="p-5 flex-1">/post/:id</div>
+
+        <p
+          *ngIf="showMiniPopUp"
+          [(tooltip)]="showMiniPopUp"
+          class="text-green-400 text-xs mr-4"
+        >
+          Deleted
+        </p>
+        <p
+          *ngIf="deletedError !== undefined"
+          class="text-red-500 text-greenred-400 text-xs mr-4"
+        >
+          {{ deletedError }}
+        </p>
+
+        <input
+          [(ngModel)]="deletePostId"
+          class="border-2 w-16 h-10 pl-2"
+          type="number"
+          value="{deleteId}"
+        />
+        <div (click)="deletePostFn()" class="delete-post">Delete</div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-post-pop-up [method]="method" [(showPopUp)]="showPopUp"></app-post-pop-up>

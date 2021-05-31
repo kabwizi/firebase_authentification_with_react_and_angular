@@ -1,0 +1,6 @@
+<div *ngFor="let post of postFound$ | async">
+  <div
+    class="px-5 font-semibold"
+    [innerHtml]="post | formatJsonPostPipes"
+  ></div>
+</div>

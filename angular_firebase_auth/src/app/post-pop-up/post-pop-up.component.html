@@ -1,0 +1,62 @@
+<div
+  class="
+pop-up-container
+    {{ showPopUp ? 'opacity-100' : 'opacity-0 pointer-events-none' }}
+  "
+>
+  <form
+    #postOrPutForm="ngForm"
+    (ngSubmit)="submit(postOrPutForm)"
+    class="pop-up-wrapper"
+  >
+    <p (click)="toggleShowPopUp()" class="close-button">Close</p>
+    <h2 class="font-black text-6xl text-center">
+      {{ method }}
+    </h2>
+    <p *ngIf="success" class="success">
+      {{ success }}
+    </p>
+    <p *ngIf="error" class="error">
+      {{ error }}
+    </p>
+
+    <div class="flex flex-col gap-4">
+      <label *ngIf="method === 'PUT'" class="text-lg font-semibold">
+        Id <span class="text-red-500">*</span>
+        <br />
+        <input
+          ngModel
+          name="id"
+          class="shadow-md rounded-lg px-4 py-2 w-full"
+          type="text"
+          placeholder="Id of the post to modify"
+        />
+      </label>
+      <label class="text-lg font-semibold">
+        Title <span class="text-red-500">*</span>
+        <br />
+        <input
+          ngModel
+          name="title"
+          class="shadow-md rounded-lg px-4 py-2 w-full"
+          type="text"
+          placeholder="Enter the title"
+        />
+      </label>
+      <label class="text-lg font-semibold">
+        Description <span class="text-red-500">*</span>
+        <br />
+        <textarea
+          ngModel
+          name="body"
+          class="shadow-md rounded-lg px-4 py-2 w-full"
+          placeholder="Enter the description"
+          rows="4"
+        ></textarea>
+      </label>
+      <button type="submit" class="btn">
+        {{ method === "POST" ? "Post a new post" : "Update the post" }}
+      </button>
+    </div>
+  </form>
+</div>
